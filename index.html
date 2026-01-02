@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit by Jisan</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        padding: 30px 0;
+    }
+    h1 {
+        margin: 0;
+    }
+    h1 span {
+        color: #FF5733; /* “by” ka color */
+    }
+    p {
+        margin: 10px 0 20px 0;
+    }
+    .container {
+        max-width: 500px;
+        margin: 40px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, select, textarea, button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Edit <span>by</span> Jisan</h1>
+    <p>Professional Photo, Video & Thumbnail Editing</p>
+</header>
+
+<div class="container">
+    <form id="orderForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="service">Select Service:</label>
+        <select id="service" required>
+            <option value="Photo Editing">Photo Editing - ₹39</option>
+            <option value="Video Editing">Video Editing - ₹59</option>
+            <option value="YouTube Thumbnail">YouTube Thumbnail - ₹29</option>
+            <option value="Instagram Reels Edit">Instagram Reels Edit - ₹49</option>
+        </select>
+
+        <label for="details">Details / Requirements:</label>
+        <textarea id="details" placeholder="Enter your details..." required></textarea>
+
+        <button type="submit">Place Order on WhatsApp</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Stop normal submit
+    var name = document.getElementById('name').value;
+    var service = document.getElementById('service').value;
+    var details = document.getElementById('details').value;
+
+    // Price assign based on service
+    var price = '';
+    if(service.includes('Photo Editing')) price = '₹39';
+    else if(service.includes('Video Editing')) price = '₹59';
+    else if(service.includes('Thumbnail')) price = '₹29';
+    else if(service.includes('Instagram Reels Edit')) price = '₹49';
+
+    var whatsappNumber = '918851347181'; // <- Apna WhatsApp number yahan daalein
+    var message = `Hello Edit by Jisan, My name is ${name} and I want to order ${service} for ${price}. Details: ${details}`;
+
+    var whatsappURL = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
+    window.open(whatsappURL, '_blank'); // WhatsApp open
+});
+</script>
+
+</body>
+</html>
